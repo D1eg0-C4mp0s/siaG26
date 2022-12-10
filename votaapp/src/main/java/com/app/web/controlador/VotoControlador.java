@@ -11,20 +11,20 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.web.entidad.Voto;
-import com.app.web.servicios.VotoService;
+import com.app.web.repositorios.VotoRepositorio;
 
 @Controller
 public class VotoControlador {
 
 @Autowired
-	private VotoService votoService;
+	private VotoRepositorio votoRepositorio;
 
 	@PostMapping("/voto")
 	public String regVoto(@Validated Voto voto, Model model) {
 		String retorno = "";
 
 		try {
-			Voto objVoto = votoService.findByIdentificacion(voto.getIdentificacion());
+			Voto objVoto = votoRepositorio.findByIdentificacion(voto.getIdentificacion());
 
 			if (objVoto != null) {
 
@@ -36,7 +36,7 @@ public class VotoControlador {
 
 				voto.setFechaHora(date);
 
-				votoService.save(voto);
+				votoRepositorio.save(voto);
 				retorno = "/message_fin";
 
 			}

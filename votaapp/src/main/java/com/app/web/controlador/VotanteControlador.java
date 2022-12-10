@@ -11,18 +11,18 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.web.entidad.Votante;
-import com.app.web.servicios.VotanteService;
+import com.app.web.repositorios.VotanteRepositorio;
 
 @Controller
 public class VotanteControlador {
 	@Autowired
-	private VotanteService votanteService;
+	private VotanteRepositorio votanteRepositorio;
 	Votante objVot = new Votante();
 	
 	@PostMapping("/validar")
 	public String valida(@Validated Votante votante, Model model) {
 		try {
-			Optional<Votante> objVotante = votanteService.findById(votante.getIdentificacion());
+			Optional<Votante> objVotante = votanteRepositorio.findById(votante.getIdentificacion());
 			
 			if (objVotante.isEmpty()) {
 				
