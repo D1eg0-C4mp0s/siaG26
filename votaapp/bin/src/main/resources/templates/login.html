@@ -22,7 +22,7 @@
 		<img th:src="@{/img/logovotaap.jpg}" style="display: block; width: 20%; margin: auto; border-radius: 5%;">
 	</header>
 
-	<aside style="width: 25%;margin: 20px auto;padding: 25px auto;">
+	<aside style="width:28%;margin: 20px auto;padding: 25px auto;">
 	
 	<form name="ING" th:action="@{/validar}" method="post" th:object="${votante}">
   <div class="text-white my-4  px-5">
@@ -35,11 +35,27 @@
     <input type="password" class="form-control" id="clave" name="clave" required aria-describedby="passHelp">
      <div id="passHelp" class="form-text">Digite su contraseña.</div>
   </div>
- <div class="text-white my-4  px-5">
- <button type="submit" class="btn btn-primary my-4  px-5">Ingresar</button>
- </div>
   
+  
+  <div class="row text-white my-4  px-5" >
+  	<div class="col-6">
+      <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+    </div>
+    <div class="col-6">
+      <a style="color: white;" th:href="@{/registro}"><button type="button" class="btn btn-primary btn-block">Registrarse</button></a>
+    </div>
+  </div>
 
+
+
+ <!--
+ <div class="row text-white my-4  px-5">
+ <div class="col-6">
+ <button type="submit" class="btn btn-primary me-1">Ingresar</button>
+ <a style="color: white;" th:href="@{/registro}"><button type="button" class="btn btn-primary ms-1 me-5">Registrarse</button></a>
+ </div>
+ </div>
+ -->
 </form>
 </aside>
 </body>
