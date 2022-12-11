@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2022 a las 02:10:35
+-- Tiempo de generación: 11-12-2022 a las 01:54:12
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -30,10 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `candidato` (
   `idenCandidato` int(10) NOT NULL,
   `nombres` varchar(60) NOT NULL,
-  `foto` varchar(20) NOT NULL,
-  `descripcion` text NOT NULL,
-  `urlPartido` varchar(20) NOT NULL
+  `foto` varchar(20) DEFAULT NULL,
+  `descripcion` text DEFAULT NULL,
+  `urlPartido` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `candidato`
+--
+
+INSERT INTO `candidato` (`idenCandidato`, `nombres`, `foto`, `descripcion`, `urlPartido`) VALUES
+(1, 'Diego', NULL, NULL, NULL),
+(2, 'David', NULL, NULL, NULL),
+(3, 'Laura', NULL, NULL, NULL),
+(4, 'Estiven', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -46,7 +56,7 @@ CREATE TABLE `votante` (
   `nombres` varchar(60) NOT NULL,
   `clave` varchar(8) NOT NULL,
   `telefono` int(10) DEFAULT NULL,
-  `correo` varchar(40) NOT NULL
+  `correo` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54,7 +64,14 @@ CREATE TABLE `votante` (
 --
 
 INSERT INTO `votante` (`identificacion`, `nombres`, `clave`, `telefono`, `correo`) VALUES
-(88, 'Estiven', '12', 312, 'e@gmail.com');
+(0, '88', '12', 0, ''),
+(1, 'e', '12', 1, 'w@gmail.com'),
+(88, 'est', '12', 88, 'e8@g.com'),
+(111, 'car', '12', 111, 'r@g.com'),
+(123, 'Estiven', '123', 312555, 'estiven@outlook.es'),
+(1037, 'estiven por ultima vez', '12', 31212, 'essss@outlook.es'),
+(1414, 'tsts', '12', 3333333, 'fgxgf@gmail.com'),
+(2020, '.kgyjfv', '12', 464546, 'fgxgf@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -66,8 +83,19 @@ CREATE TABLE `voto` (
   `codVoto` int(8) NOT NULL,
   `idenCandidato` int(10) NOT NULL,
   `identificacion` int(10) NOT NULL,
-  `fechaHora` datetime NOT NULL
+  `fechaHora` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `voto`
+--
+
+INSERT INTO `voto` (`codVoto`, `idenCandidato`, `identificacion`, `fechaHora`) VALUES
+(3, 1, 88, '2022-12-08 19:57:36'),
+(4, 3, 123, '2022-12-09 23:16:58'),
+(5, 1, 1414, '2022-12-10 18:35:12'),
+(6, 3, 2020, '2022-12-10 18:36:01'),
+(7, 4, 1037, '2022-12-10 18:38:42');
 
 --
 -- Índices para tablas volcadas
@@ -92,6 +120,16 @@ ALTER TABLE `voto`
   ADD PRIMARY KEY (`codVoto`),
   ADD KEY `identificacion` (`identificacion`),
   ADD KEY `idenCandidato` (`idenCandidato`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `voto`
+--
+ALTER TABLE `voto`
+  MODIFY `codVoto` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
