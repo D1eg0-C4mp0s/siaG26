@@ -24,21 +24,23 @@ public class VotanteControlador {
 		try {
 			Optional<Votante> objVotante = votanteRepositorio.findById(votante.getIdentificacion());
 			
-			if (objVotante.isEmpty()) {
+			if (objVotante.isPresent()) {
 				
-				return "/message";
-				
-			} else {
 				objVot = objVotante.get();
 				if(objVot.getIdentificacion() == votante.getIdentificacion() && objVot.getClave().equals(votante.getClave())){
 				model.addAttribute("voto", objVotante.get());
 				return "/index";
+				
+				} else {
+				
+				return "/message";
+				}
 			}else {
 				
 				return "/message";
 				
 			}
-			}
+			
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}

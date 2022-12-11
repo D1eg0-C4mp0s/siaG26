@@ -35,7 +35,6 @@ public class VotoControlador {
 				System.out.println("Fecha: " + date);
 
 				voto.setFechaHora(date);
-
 				votoRepositorio.save(voto);
 				retorno = "/message_fin";
 
@@ -46,11 +45,6 @@ public class VotoControlador {
 		return retorno;
 
 	}
-	//@GetMapping("/resultados")
-	//public String verResultados(Model model) {
-		//Resultados res = votoService.totalVotos();
-		//return "";
-	//}
 
 	
 }

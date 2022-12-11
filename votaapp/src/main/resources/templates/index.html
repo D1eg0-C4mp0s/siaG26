@@ -53,7 +53,7 @@
             <section id="izq" class="col-8 my-5">
                 
                 <form name="VOT" th:object="${voto}" method="post" th:action="@{/voto}">
-            	<input type="hidden" name="identificacion" id="identificacion" th:value="${voto.identificacion}">
+            	<input type="hidden" name="identificacion" id="identificacion" th:value="*{identificacion}">
 
                 <div class="text-white text-center">
                     

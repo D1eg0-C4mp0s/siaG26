@@ -31,12 +31,38 @@
 
 	<aside style="width: 28%; margin: 20px auto; padding: 25px auto;">
 
+		<form name="ING" method="post" th:action="@{/validar}"
+			th:object="${votante}">
+
+			<div class="text-white my-4 px-5">
+				<label for="identificacion">Identificación</label> 
+				<input type="number" class="form-control" name="identificacion"
+					id="identificacion" placeholder="Identificación" required>
+			</div>
+			<div class="text-white my-4 px-5">
+				<label for="clave">Contraseña</label> <input type="password"
+					class="form-control" name="clave" id="clave"
+					placeholder="Contraseña" required>
+			</div>
+
+			<div class="row text-white my-4 px-5">
+				<div class="col-6">
+					<button type="submit" class="btn btn-primary btn-block">Iniciar
+						sesión</button>
+				</div>
+				<div class="col-6">
+					<a th:href="@{/registro}"><button
+							type="button" class="btn btn-primary btn-block">Registrarse</button></a>
+				</div>
+			</div>
+		</form>
+		<!-- 
 		<form name="ING" th:action="@{/validar}" method="post"
 			th:object="${votante}">
 			<div class="text-white my-4 px-5">
 				<label for="identificacion" class="form-label">Identificación:</label>
 				<input type="number" class="form-control" name="identificacion"
-					required id="identificacion" aria-describedby="IdenHelp">
+					 id="identificacion" aria-describedby="IdenHelp" required>
 				<div id="IdenHelp" class="form-text">Digite su numero de
 					identificacion (solo numeros).</div>
 			</div>
@@ -58,8 +84,9 @@
 							type="button" class="btn btn-primary btn-block">Registrarse</button></a>
 				</div>
 			</div>
-
 		</form>
+-->
+
 	</aside>
 </body>
 </html>
